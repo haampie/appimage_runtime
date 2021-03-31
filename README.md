@@ -59,4 +59,4 @@ Notes about licensing:
 - libfuse is LGPL licensed
 - runtime.c is from AppImageKit and libappimage, which is licensed MIT
 
-I still have to figure out whether or not statically linking to libfuse is a good idea or not.
+I still have to figure out whether or not statically linking to libfuse is a good idea or not in terms of licensing, as well as the implications of dual licensing of zstd.
