@@ -1,6 +1,6 @@
 # AppImage runtime without all the appfolder business
 
-Building the dependencies -- note that you might want to mark libfuse as external (`spack external find pkg-config pkgconf libfuse`) so that you can use the system setuid fusermount binary.
+Building the dependencies -- note that you might want to mark libfuse as external (`spack external find --not-buildable pkg-config pkgconf libfuse`) so that you can use the system setuid fusermount binary.
 
 ```
 $ spack -e . install -v
