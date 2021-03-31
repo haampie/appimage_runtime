@@ -4,7 +4,7 @@ STRIP         = strip
 MAGIC         = echo "8: 414902" | xxd -r -
 MKDIR         = mkdir -p
 COPY          = cp -f
-LIBS          = -lfuse3 -lsquashfuse -lsquashfuse_ll -lzstd -lpthread
+LIBS          = -lfuse3 -lsquashfuse -lsquashfuse_ll -lzstd -lpthread -ldl
 
 all: runtime
 .PHONY: all embed mrproper

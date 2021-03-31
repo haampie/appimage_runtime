@@ -1,10 +1,20 @@
 # AppImage runtime without all the appfolder business
 
-Building the runtime (shared libfuse)
+Building the dependencies -- note that you might want to mark libfuse as external (`spack external find pkg-config pkgconf libfuse`) so that you can use the system setuid fusermount binary.
 
 ```
-$ spack external find --not-buildable libfuse pkg-config
 $ spack -e . install -v
+```
+If you build libfuse with spack, you'll have to do the system install by hand and make fusermount3 a setuid binary:
+
+```
+sudo chown root:root /path/to/fusermount3
+sudo chmod u+s /path/to/bin/fusermount3
+```
+
+Now bulid the runtime:
+
+```
 $ export C_INCLUDE_PATH=.spack-env/view/include
 $ export LIBRARY_PATH=.spack-env/view/lib
 $ make
@@ -13,12 +23,8 @@ $ make
 Size overhead from the runtime is small:
 
 ```
-$ libtree runtime
-runtime
-└── libfuse3.so.3 [ld.so.conf]
-
-$ du -sh runtime
-128K	runtime
+$ du -h runtime
+400K runtime
 ```
 
 Now create an AppRun executable in a folder and squashfs it:
@@ -32,10 +38,17 @@ $ mksquashfs example example.squashfs -comp zstd -quiet
 
 And merge runtime and the squashfs file into an executable:
 
-
 ```
 $ cat runtime example.squashfs > app
 $ chmod +x app
 $ ./app
 hello world
 ```
+
+Notes about licensing:
+
+- zstd is dual BSD and GPLv2 licensed
+- squashfuse is BSD licensed
+- libfuse is LGPL licensed
+
+I still have to figure out whether or not statically linking to libfuse is a good idea or not.
