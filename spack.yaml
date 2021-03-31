@@ -1,0 +1,4 @@
+spack:
+  specs: [squashfuse@master~lz4~lzo+min_size~shared~xz~zlib, zstd~shared build_type=MinSizeRel]
+  concretization: together
+  view: true

@@ -1,0 +1,6 @@
+runtime
+.spack-env
+*.o
+*.lock
+example
+
