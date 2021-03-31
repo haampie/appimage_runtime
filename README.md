@@ -50,5 +50,6 @@ Notes about licensing:
 - zstd is dual BSD and GPLv2 licensed
 - squashfuse is BSD licensed
 - libfuse is LGPL licensed
+- runtime.c is from AppImageKit and libappimage, which is licensed MIT
 
 I still have to figure out whether or not statically linking to libfuse is a good idea or not.
