@@ -12,7 +12,7 @@ sudo chown root:root /path/to/fusermount3
 sudo chmod u+s /path/to/bin/fusermount3
 ```
 
-Now bulid the runtime:
+Now build the runtime:
 
 ```
 $ export C_INCLUDE_PATH=.spack-env/view/include
