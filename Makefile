@@ -17,8 +17,7 @@ all: runtime
 
 # Compile runtime but do not link
 runtime.o: runtime.c
-	$(CC) -c $(CFLAGS) $^ \
-	-I/home/harmen/spack/opt/spack/linux-ubuntu20.04-zen2/gcc-10.2.0/squashfuse-master-nebdbqmwlgussiif53ia2jtxh4xbg6fv/include
+	$(CC) -c $(CFLAGS) $^
 
 # Add .upd_info and .sha256_sig sections
 embed: 1024_blank_bytes runtime
