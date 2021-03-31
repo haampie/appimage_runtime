@@ -10,7 +10,18 @@ $ export LIBRARY_PATH=.spack-env/view/lib
 $ make
 ```
 
-Creating a dir + executable + squashfs
+Size overhead from the runtime is small:
+
+```
+$ libtree runtime
+runtime
+└── libfuse3.so.3 [ld.so.conf]
+
+$ du -sh runtime
+128K	runtime
+```
+
+Now create an AppRun executable in a folder and squashfs it:
 
 ```
 $ mkdir -p example
@@ -19,7 +30,7 @@ $ chmod +x example/AppRun
 $ mksquashfs example example.squashfs -comp zstd -quiet
 ```
 
-Creating an executable
+And merge runtime and the squashfs file into an executable:
 
 
 ```
