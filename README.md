@@ -25,6 +25,13 @@ Size overhead from the runtime is small:
 ```
 $ du -h runtime
 400K runtime
+
+$ ldd runtime
+        linux-vdso.so.1 (0x00007fffeb173000)
+        libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f7200a63000)
+        libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f7200a5d000)
+        libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f720086b000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f7200afe000)
 ```
 
 Now create an AppRun executable in a folder and squashfs it:
